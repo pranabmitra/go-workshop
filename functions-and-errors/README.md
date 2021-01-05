@@ -126,6 +126,48 @@ func main() {
 */
 ```
 
+##### Init Function
+
+Go program (executable) starts in the main package and the entry point is the main function. There is another special function that we should be aware of, called `init()`. There can be more than one `init()` function in a package.
+
+```go
+package main 
+import "fmt"  
+
+var greet = "Hello...." 
+var items = make(map[int]string)
+
+func init() { 
+  fmt.Println(greet)
+  fmt.Println("Initializing items") 
+  items[1] = "Laptop" 
+  items[2] = "Charger" 
+  items[3] = "Pen" 
+  items[4] = "Paper" 
+} 
+
+func init(){ 
+  fmt.Println("Second") 
+} 
+
+func main() { 
+  fmt.Println("Hello, main function")
+  for k, v := range items { 
+    fmt.Printf("Items: key: %d, value: %s\n", k, v) 
+  } 
+}
+/* --- output: --- (Go maps do not guarantee the order of data. (arrays/slices - does))
+  Hello....
+  Initializing items
+  Second
+  Hello, main function
+  Items: key: 2, value: Charger
+  Items: key: 3, value: Pen
+  Items: key: 4, value: Paper
+  Items: key: 1, value: Laptop
+*/
+```
+
 
 ##### Errors
 
