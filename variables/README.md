@@ -19,7 +19,7 @@ package main
 import "math/rand"
 func main() {
   var seed = 1234456789 // default type will be `int` based on the value
-  rand.Seed(seed) // `rand.Seed` method requires a value of the `int64` type; Hence, it create an error
+  rand.Seed(seed) // `rand.Seed` method requires a value of the `int64` type; Hence, it will create an error
 }
 
 /* With correct type */
